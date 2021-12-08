@@ -6,8 +6,8 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "build": "cd client && yarn run build && tsc --build tsconfig.json",
-    "install-client": "cd client && npm install",
+    "build": "tsc --build tsconfig.json",
+    "install-client": "cd client && yarn && yarn run build",
     "heroku-postbuild": "yarn run install-client && yarn run build",
     "start": "node dist/app.js",
     "generate-prisma-migration": "prisma migrate dev --name",
