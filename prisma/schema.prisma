@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialActions"]
+}
+
+generator dbml {
+  provider = "prisma-dbml-generator"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_DATABASE_URL")
+}
+
+model Session {
+	id 				Int 		@id	@default(autoincrement())
+	userId			Int
+	token 			String
+	expiresAt		DateTime
+	data			String?
+	createdAt		DateTime 	@default(now())
+	updatedAt		DateTime 	@updatedAt
+	user			User	 	@relation(fields: [userId], references: [id])
+
+	@@index([expiresAt])
+}
+
+model Team {
+	id				Int			@id @default(autoincrement())
+	name 			String
+	ownerEmail		String[]
+	createdAt 		DateTime 	@default(now())
+	startDate		DateTime
+	endDate			DateTime
+	status			String		@default("Doing")
+	picture 		String		@default("https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_91_1_1528x800/public/2020-08/shutterstock_1731284125_0.jpg?itok=89UrdUt_")		
+	numOfMember		Int			@default(1)
+	isPublic 		Boolean		@default(true)
+	description		String?
+	members			Member[]	
+}
+
+model Member {
+	user			User 		@relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+	team			Team		@relation(fields: [teamId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+	isOwner			Boolean		@default(false)
+	userId			Int
+	teamId 			Int
+ 	joinedAt		DateTime 	@default(now())
+ 	assignedBy 		String?
+
+	@@unique([userId, teamId])
+}
+
+model User {
+	id				Int			@id @default(autoincrement())
+	email			String		@unique
+	picture			String
+	createAt 		DateTime 	@default(now())
+	updateAt 		DateTime	@updatedAt
+	isAdmin			Boolean	 	@default(false)
+	status 			String		@default("NotInitiated")
+	session			Session[]
+	profile			UserProfile?
+	members			Member[]
+
+ 	 @@index([email])
+}
+
+model UserProfile {
+	id					Int			@id @default(autoincrement())
+ 	User 				User		@relation(fields: [userId], references: [id])
+	userId				Int
+	introduction 		String?
+	name				String
+	talents				String[]
+	interests			String[]
+	updateAt			DateTime	@updatedAt
+
+	@@unique([userId])
+
+}

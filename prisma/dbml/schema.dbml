@@ -1,0 +1,79 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Session {
+  id Int [pk, increment]
+  userId Int [not null]
+  token String [not null]
+  expiresAt DateTime [not null]
+  data String
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  user User [not null]
+}
+
+Table Team {
+  id Int [pk, increment]
+  name String [not null]
+  ownerEmail String [not null]
+  createdAt DateTime [default: `now()`, not null]
+  startDate DateTime [not null]
+  endDate DateTime [not null]
+  status String [not null, default: 'Doing']
+  picture String [not null, default: 'https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_91_1_1528x800/public/2020-08/shutterstock_1731284125_0.jpg?itok=89UrdUt_']
+  numOfMember Int [not null, default: 1]
+  isPublic Boolean [not null, default: true]
+  description String
+  members Member [not null]
+}
+
+Table Member {
+  user User [not null]
+  team Team [not null]
+  isOwner Boolean [not null, default: false]
+  userId Int [not null]
+  teamId Int [not null]
+  joinedAt DateTime [default: `now()`, not null]
+  assignedBy String
+
+  indexes {
+    (userId, teamId) [unique]
+  }
+}
+
+Table User {
+  id Int [pk, increment]
+  email String [unique, not null]
+  picture String [not null]
+  createAt DateTime [default: `now()`, not null]
+  updateAt DateTime [not null]
+  isAdmin Boolean [not null, default: false]
+  status String [not null, default: 'NotInitiated']
+  session Session [not null]
+  profile UserProfile
+  members Member [not null]
+}
+
+Table UserProfile {
+  id Int [pk, increment]
+  User User [not null]
+  userId Int [not null]
+  introduction String
+  name String [not null]
+  talents String [not null]
+  interests String [not null]
+  updateAt DateTime [not null]
+
+  indexes {
+    (userId) [unique]
+  }
+}
+
+Ref: Session.userId > User.id
+
+Ref: Member.userId > User.id
+
+Ref: Member.teamId > Team.id
+
+Ref: UserProfile.userId - User.id

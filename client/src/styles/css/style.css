@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans','Droid Sans', 'Helvetica Neue';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow: hidden; }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Couries New', monospace; }
+
+.flex {
+  display: flex; }
+  .flex-1 {
+    flex: 1; }
+  .flex-6 {
+    flex: 6; }
+  .flex-jc-sb {
+    justify-content: space-between; }
+  .flex-jc-sa {
+    justify-content: space-around; }
+  .flex-jc-c {
+    justify-content: center; }
+  .flex-jc-s {
+    justify-content: stretch; }
+  .flex-jc-start {
+    justify-content: start; }
+  .flex-jc-end {
+    justify-content: end; }
+  .flex-ai-c {
+    align-items: center; }
+  .flex-ai-s {
+    align-items: stretch; }
+  .flex-dir-c {
+    flex-direction: column; }
+  .flex-dir-r {
+    flex-direction: row; }
+
+.ant-btn {
+  border-radius: 10px; }
+  .ant-btn-small {
+    font-size: 10px !important;
+    height: 18px !important; }
+
+.ant-card-body {
+  max-height: 80%; }
+
+.ant-empty {
+  height: 100%;
+  width: 100%; }
+
+.ant-modal-content {
+  overflow: auto;
+  border-radius: 24px; }
+
+.ant-input {
+  border-radius: 10px; }
+
+.ant-tabs-tabpane {
+  overflow: auto; }
+
+.mb-10 {
+  margin-bottom: 10px; }
+
+.mb-11 {
+  margin-bottom: 11px; }
+
+.mb-12 {
+  margin-bottom: 12px; }
+
+.mb-13 {
+  margin-bottom: 13px; }
+
+.mb-14 {
+  margin-bottom: 14px; }
+
+.mt-10 {
+  margin-top: 10px; }
+
+.mt-11 {
+  margin-top: 11px; }
+
+.mt-12 {
+  margin-top: 12px; }
+
+.ml-10 {
+  margin-left: 10px; }
+
+.ml-11 {
+  margin-left: 11px; }
+
+.ml-12 {
+  margin-left: 12px; }
+
+.mr-7 {
+  margin-right: 5px; }
+
+.mr-10 {
+  margin-right: 10px; }
+
+.mr-11 {
+  margin-right: 11px; }
+
+.mr-12 {
+  margin-right: 12px; }
+
+.ant-menu.ant-menu-dark .ant-menu-sub {
+  background: #a4a0f1; }
+
+.ant-layout-sider-children {
+  background-color: #a4a0f1; }
+
+span.ant-tabs-separator {
+  display: none; }
+
+.btn-new-team {
+  float: right;
+  margin-right: 15px; }
+
+.site-layout .site-layout-background {
+  background: #fff; }
+
+.ant-menu.ant-menu-dark {
+  background-color: #a4a0f1; }
+
+.ant-upload.ant-upload-select.ant-upload-select-text {
+  margin: 15px 0px; }
+
+.ant-tabs-content {
+  height: 100%; }
+
+div#rc-tabs-2-panel-1 {
+  align-items: normal !important;
+  justify-content: normal !important; }
+
+ul.ant-pagination.ant-table-pagination.ant-table-pagination-right {
+  display: none !important; }
+
+ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light {
+  margin: 20px 0px 0px 0px; }
